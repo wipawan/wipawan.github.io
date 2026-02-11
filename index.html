@@ -61,6 +61,24 @@
           }
         );
 
+        player.on(
+          dashjs.MediaPlayer.events.PLAYBACK_PAUSED,
+          function (data) {
+            console.log(
+              "Playback paused"
+            );
+           window.DD_RUM.addAction("playback_paused", {
+            'timestamp': Date.now()
+            'video_id': video.id
+            'video_title': video.title
+            'video_url': video.url
+            'video_duration': video.duration
+            'video_current_time': video.currentTime
+            'video_current_time': video.currentTime
+           });
+          }
+        );
+
         player.initialize(video, url, true);
       }
     </script>
